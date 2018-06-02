@@ -16,6 +16,13 @@
 
         <div class="uk-alert" v-for="message in messages">{{ message }}</div>
 
+        <div v-el:gdpr v-if="config.enabled"></div>
+
+        <label class="checkbox">
+            <input name="" v-validate="'required'" type="checkbox">
+            I agree to the terms and conditions.
+        </label>
+
         <div v-el:reply v-if="config.enabled"></div>
 
         <p v-else>{{ 'Comments are closed.' | trans }}</p>
@@ -48,6 +55,8 @@
             <div class="uk-comment-body">
 
                 <p>{{{ comment.content }}}</p>
+
+                <p v-if="showGdpr"><label><input type="checkbox" v-validate:required>{{ I agree to the terms. | trans }}<label></p>
 
                 <p v-if="showReplyButton"><a href="#" @click.prevent="replyTo">{{ 'Reply' | trans }}</a></p>
 
@@ -109,6 +118,15 @@
                     <textarea id="form-comment" class="uk-form-width-large" name="content" rows="10" v-model="content" v-validate:required></textarea>
 
                     <p class="uk-form-help-block uk-text-danger" v-show="form.content.invalid">{{ 'Comment cannot be blank.' | trans }}</p>
+                </div>
+            </div>
+
+            <div class="uk-form-row">
+                <label for="form-gdpr" class="uk-form-label">{{ 'You accept the agreement' | trans }}</label>
+                <div class="uk-form-controls">
+                    <input id="form-gdpr" v-if="requiregdpr" type="checkbox" name="gdpr" v-model="gdpr" v-validate:required>
+
+                    <p class="uk-form-help-block uk-text-danger" v-show="form.gdpr.invalid">{{ 'Name cannot be blank.' | trans }}</p>
                 </div>
             </div>
 
