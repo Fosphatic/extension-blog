@@ -18,11 +18,6 @@
 
         <div v-el:gdpr v-if="config.enabled"></div>
 
-        <label class="checkbox">
-            <input name="" v-validate="'required'" type="checkbox">
-            I agree to the terms and conditions.
-        </label>
-
         <div v-el:reply v-if="config.enabled"></div>
 
         <p v-else>{{ 'Comments are closed.' | trans }}</p>
@@ -130,8 +125,15 @@
                 </div>
             </div>
 
+            <div class="uk-form-row">
+              <label class="checkbox">
+                  <input v-model="term" type="checkbox">
+                  I agree to the terms and conditions.
+              </label>
+            </div>
+
             <p>
-                <button class="uk-button uk-button-primary" type="submit" accesskey="s">{{ 'Submit' | trans }}</button>
+                <button class="uk-button uk-button-primary" :disabled="term === false" type="submit" accesskey="s">{{ 'Submit' | trans }}</button>
                 <button class="uk-button" accesskey="c" v-if="parent" @click.prevent="cancel">{{ 'Cancel' | trans }}</button>
             </p>
 

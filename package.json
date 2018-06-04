@@ -1,7 +1,8 @@
 {
   "name": "pagekit-blog",
   "scripts": {
-    "archive": "webpack -p && composer archive --format=zip"
+    "archive": "webpack -p && composer archive --format=zip",
+    "webpack": "webpack --config webpack.config.js"
   },
   "devDependencies": {
     "babel-core": "^6.1.2",
