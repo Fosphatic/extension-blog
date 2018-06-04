@@ -51,8 +51,6 @@
 
                 <p>{{{ comment.content }}}</p>
 
-                <p v-if="showGdpr"><label><input type="checkbox" v-validate:required>{{ I agree to the terms. | trans }}<label></p>
-
                 <p v-if="showReplyButton"><a href="#" @click.prevent="replyTo">{{ 'Reply' | trans }}</a></p>
 
             </div>
