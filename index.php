@@ -127,8 +127,8 @@ return [
             'notifications' => 'always',
             'order' => 'ASC',
             'replymail' => true,
-            'require_email' => true,
-            'require_gdpr' => true
+            'require_email' => true
+
 
         ],
 
